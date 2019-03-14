@@ -1,0 +1,114 @@
+link#bootstrap-css href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" /
+script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" 
+script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" 
+/! ---- Include the above in your HEAD tag --------
+section.profil.py-5
+  .container
+    .row
+      .col-md-8
+        .slider
+          #carouselExampleIndicators.carousel.slide data-ride="carousel" 
+            ol.carousel-indicators
+              li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+              li data-slide-to="1" data-target="#carouselExampleIndicators" 
+              li data-slide-to="2" data-target="#carouselExampleIndicators" 
+            .carousel-inner style=("    border-radius: 0.25rem;") 
+              .carousel-item.active
+                img.d-block.w-100 alt=("First slide") src="http://i2.haber7.net//haber/haber7/photos/2017/42/yerli_elektrikli_otobus_sileo_gorucuye_cikti_1508579280_0003.jpg" style=("height: 290px") /
+              .carousel-item
+                img.d-block.w-100 alt=("Second slide") src="https://plusfly.com/wp-content/uploads/2017/08/kamilkoc-otobus-bileti.jpg" style=("height: 290px") /
+              .carousel-item
+                img.d-block.w-100 alt=("Third slide") src="https://www.biletbayi.com/Content/ContentItemDocument/images/manload/pamukkale-otobus.jpg" style=("height: 290px") /
+            a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
+              span.carousel-control-prev-icon aria-hidden="true" 
+              span.sr-only Previous
+            a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
+              span.carousel-control-next-icon aria-hidden="true" 
+              span.sr-only Next
+        .olanaklar-kutu
+          .olanaklar
+            h4.pb-3 Olanaklar
+            /ul.yacht-info__list
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid İstanbul
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid 35-56
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid klima
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid Tv
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid wifi
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid Bagaj
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid Prij
+              li
+                img.arac-icon alt=("Kiwi standing on oval") src="https://img.icons8.com/metro/1600/home.png" /
+                span.vertical-align-mid Tuvalet
+          .olanaklar.margin-top--22
+            h4.pb-3 Hakkında
+            p Fethiye'nin turkuaz ve dingin sularında muhteşem bir hafta gerçekleştirebilirsiniz. Kiralık yat ile bu doğal güzelliklere yakından şahitlik edebilirsiniz. 5 kabinli kiralık yelkenlimiz ile sizi Fethiye ve Göcek'in muhteşem koylarında keyifli bir seyahate çıkartıyoruz.
+      .col-md-4
+        .card
+        img.card-img-top alt=("Card image cap") src="https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg" /
+        .card-body.text-center
+          span.badge.badge-warning Ali Bulut
+          p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+          a.primary-btn2.header-btn.text-uppercase.text-center  Mesaj At
+
+
+css:
+  .profil{
+    background: #f9f9f9;
+  }
+  .profil .yacht-info__list li {
+      width:25%;
+  }
+  .olanaklar-kutu{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    margin: 15px 0px;
+  }
+  .olanaklar{
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 25px 30px 30px;
+  }
+  .margin-top--22{
+    margin-top:-22px;
+  }
+  .olanaklar-kutu h4{
+    color: #FF9800;
+  }
+  .yacht-info__list img{
+      width:20px;
+      padding-right:5px;
+  }
+  .yacht-info__list {
+      list-style: none;
+      padding: 0;
+      font-size: 16px;
+  }
+  .yacht-info__list li {
+      padding: 6px 0;
+      font-size: 15px;
+      display: table;
+      height: 100%;
+      line-height: 21px;
+      float: left;
+      width: 50%;
+      margin-bottom: 5px;
+  }

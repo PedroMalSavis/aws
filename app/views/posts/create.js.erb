@@ -1,0 +1,3 @@
+$('#posts').html("<%= j render(partial: 'posts/post', collection: @posts, as: :post) %>");
+
+toastr.success('Posted');

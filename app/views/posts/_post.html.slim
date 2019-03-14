@@ -1,0 +1,26 @@
+- current_user = User.third
+.card.gedf-card
+  .card-header
+    .d-flex.justify-content-between.align-items-center
+      .d-flex.justify-content-between.align-items-center
+        .mr-2
+          = image_tag current_user.photo, size: 60, class: 'rounded-circle'
+          /img.rounded-circle alt="" src="https://picsum.photos/50/50" width="45" /
+        .ml-2
+          .h5 = current_user.name
+          / .h5.m-0 User
+          / .h7.text-muted subtitle
+  .card-body
+    .text-muted.h7.mb-2
+      i.fa.fa-clock-o
+      | just now
+    p.card-text
+      /small = post.content
+      // h1 = post.content.scan(/^"./)
+      = post.content.partition(">").last
+      br
+      /- @content = post.content.scan(/\W*"."\W*/)
+        = @content 
+      /- @content = post.content
+        h1 = @content
+      /- @content = post.content.scan(/"([^"]*)"/)
