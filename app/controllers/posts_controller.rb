@@ -8,11 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        Aws.config.update({
-          region: 'us-west-2',
-          credentials: Aws::Credentials.new(Rails.application.credentials.aws[:access_key], Rails.application.credentials.aws[:secret_access_key])
-        })
-        translator = Aws::Translate::Client.new(region: Aws.config[:region], credentials: Aws.config[:credentials])
+        translator = Aws::Translate::Client.new(region: 'us-west-2', access_key_id: $aws_key, secret_access_key: $aws_secret)
         output = translator.translate_text(text: @post.content, source_language_code: 'en', target_language_code: 'fr')
         @post.update(content: output)
 

@@ -7,30 +7,46 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        Aws.config.update({
-          region: 'us-west-2',
-          credentials: Aws::Credentials.new(Rails.application.credentials.aws[:access_key], Rails.application.credentials.aws[:secret_access_key])
-        })
-
-        rekognition = Aws::Rekognition::Client.new(region: Aws.config[:region], credentials: Aws.config[:credentials])
-        current_user = User.third
-        @uri = current_user.avatar.service_url
+        rekognition = Aws::Rekognition::Client.new(region: 'us-west-2', access_key_id: $aws_key, secret_access_key: $aws_secret)
+        @uri = @user.avatar.service_url
         @dir = @uri.split("/").fourth
         @key = @dir.split("?").first
-        puts @key
+        puts 'KEY IS:' + @key
 
-        resp = rekognition.detect_faces(
+        # resp = rekognition.detect_faces(
+        #   {image:
+        #     {s3_object:
+        #       {bucket: 'soraaws',
+        #         name: @key,
+        #       },
+        #     }, attributes: ['ALL'],
+        #   }
+        # )
+        
+        response = rekognition.detect_labels(
           {image:
             {s3_object:
               {bucket: 'soraaws',
                 name: @key,
               },
-            }, attributes: ['ALL'],
+            },
+            max_labels: 1, 
+            min_confidence: 70
           }
         )
-        
-        @emotions = resp.face_details[0].emotions
-        @user.update(notes: @emotions)
+        # response.labels.each do |label|
+        #   puts "#{label.name}-#{label.confidence.to_i}"
+        # end
+        @user.update(notes: response.labels.first.name)
+        # aws rekognition detect-labels --image '{"S3Object":{"Bucket": "soraaws", "Name":"DTDbcd8JCDLqRFjyooM39gEx"}}'
+
+
+        # @emotions = resp.face_details[0].emotions
+        # @user.update(notes: @emotions)
+
+
+        # https://s3-us-west-2.amazonaws.com/soraaws/DTDbcd8JCDLqRFjyooM39gEx
+
         # flash[:emotions] = @emotions
 
         # labels = rekognition.detect_labels(
@@ -41,8 +57,6 @@ class UsersController < ApplicationController
         #     }
         #   }
         # )
-
-        # flash[:labels] = labels
         format.html { redirect_to root_path, notice: 'ok la!' }
         # format.json { render :show, status: :ok, location: @user }
         # format.js

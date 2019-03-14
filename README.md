@@ -19,6 +19,7 @@ We tried two ways to implement the challenge:
 ## Ruby way
 * `bundle install`
 * `rake db:create db:migrate db:seed`
+* add AWS keys to `application_controller`
 * `rails s`
 * http://localhost:3000
 
@@ -33,7 +34,6 @@ To deploy, follow the instructions here: https://www.phusionpassenger.com/librar
 ### Prerequisites:
 * Ruby and RVM
 * PostgreSQL
-
 
 
 ## Economic Singularity

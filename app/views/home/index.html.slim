@@ -43,7 +43,7 @@ nav.navbar.navbar-light.bg-white
           li.list-group-item 
             - if current_user.avatar.attached?
               = image_tag current_user.avatar, class: 'img-fluid rounded'
-              /= current_user.notes
+              small = current_user.notes
               / trying to parse
               / - if flash[:emotions].present?
               /   - flash[:emotions].each do |e|
@@ -76,6 +76,7 @@ nav.navbar.navbar-light.bg-white
                 .alert.alert-info
                   | Upload avatar &nbsp;
                   small= f.file_field :avatar, direct_upload: true
+                  = f.input :email, class: "form-control bordered-blue"
                 = f.submit 'Upload image', class: "btn btn-primary btn-block btn-gradient"
               .py-4
           = render partial: 'posts/post', collection: @posts, as: :post
